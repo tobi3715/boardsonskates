@@ -13,9 +13,9 @@
       <div>
         <h1>The man behind</h1>
         <p>The main main behind BoardsOnSkates, the man, the myth, the legend is.. <br> Tobias Søllingvraa!</p>
-        <v-col id="socials" class="ml-16">
-          <a href="https://www.linkedin.com/in/tobias-soellingvraa/" target="_blank"><v-row class="ml-16"><p id="social_p"><i class="fa fa-linkedin" id="linkedin"></i>            https://www.linkedin.com/in/tobias-soellingvraa/</p></v-row></a>
-          <a href="mailto: soellingvraa52@gmail.com"><v-row class="ml-16"><p id="social_p"><i class="fa fa-envelope" id="mail"></i>            soellingvraa52@gmail.com</p></v-row></a>
+        <v-col id="socials">
+          <a href="https://www.linkedin.com/in/tobias-soellingvraa/" target="_blank"><v-row><p id="social_p"><i class="fa fa-linkedin" id="linkedin"></i>            https://www.linkedin.com/in/tobias-soellingvraa/</p></v-row></a>
+          <a href="mailto: soellingvraa52@gmail.com"><v-row><p id="social_p"><i class="fa fa-envelope" id="mail"></i>            soellingvraa52@gmail.com</p></v-row></a>
         </v-col>
         <div id="foto">
       <img src="../assets/mig.jpg" alt="Billede a mig" class="curve"/>
@@ -27,8 +27,6 @@
 
 <style lang="scss" scoped>
 #main {
-  height: 80vh;
-  padding: 20px;
   margin: 20px;
   display: flex;
 }
@@ -62,6 +60,10 @@
 a {
   text-decoration: none;
   color: white;
+}
+
+#socials {
+  padding-left: 25%;
 }
 
 #social_p:hover {

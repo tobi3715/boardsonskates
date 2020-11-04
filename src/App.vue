@@ -2,7 +2,7 @@
   <v-app id="app">
     <navigation/>
     <v-main>
-      <v-container class="fill-height" fluid>
+      <v-container class="fill-height pa-0" fluid >
         <router-view></router-view>
 
       </v-container>
@@ -16,7 +16,7 @@
 
 <style lang="scss">
 main {
-  background-image: url('./assets/pic2.jpg');
+  background-image: url('./assets/baggrundsfoto.jpeg');
   background-size: cover;
 }
 </style>

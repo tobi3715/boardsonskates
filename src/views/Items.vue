@@ -45,8 +45,8 @@
         </thead>
         <tbody>
           <tr v-for="item in itemFilter" :key="item.name">
-            <td id="td_size">
-              <v-img  id="td_menuItem_img" v-bind:src="item.image"></v-img>
+            <td>
+              <v-img contain id="td_menuItem_img" v-bind:src="item.image"></v-img>
             </td>
             <td>
               <span id="td_name">{{ item.name }}</span><br>
@@ -59,11 +59,11 @@
               </v-btn>
             </td>
           </tr>
-          <v-row class="mr-16 mb-4 mt-4 justify-end">
-           <router-link to="/basket"><v-btn class="ml-5" color="blue">go to basket</v-btn></router-link>
-          </v-row> 
         </tbody>
       </template>
+    </v-simple-table>
+    <v-simple-table id="btn_div">
+      <router-link to="/basket"><v-btn class="ml-5" color="blue">go to basket</v-btn></router-link>
     </v-simple-table>
         </div>
       </v-col>
@@ -168,7 +168,7 @@ import { dbMenuAdd} from '../../firebase'
   width: 100%;
   display: flex;
   padding-top: 25px;
-  padding-left: 20%;
+  padding-left: 25%;
 }
 
 #gender_btn {
@@ -226,9 +226,9 @@ import { dbMenuAdd} from '../../firebase'
   }
 
 
-  #td_menuItem_img {
-    max-width: 100px;
-    max-height: 100px;
+  #td_menuItem_img {  // billede
+    max-width: 150px;
+    max-height: 150px;
   }
 
   #item_description {
@@ -236,4 +236,11 @@ import { dbMenuAdd} from '../../firebase'
     font-weight: 300;
     font-size: 13px;
   }
+
+  #btn_div {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px 30px 0;
+  }
+
 </style>
