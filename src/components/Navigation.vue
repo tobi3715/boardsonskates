@@ -74,9 +74,12 @@
           <v-spacer></v-spacer>
           <router-link id="menu" to="/items" class="mr-2"><v-icon>view_agenda</v-icon></router-link>
           <router-link id="shopping_basket" to="/basket"><v-icon>shopping_basket</v-icon></router-link>
-          <v-btn color="red" @click.prevent="signOut()">
+          <v-btn v-if="currentUser" color="red" @click.prevent="signOut()">
              Sign Out
           </v-btn>
+          <router-link to="/login"><v-btn v-if="!currentUser" color="green">
+             Log In
+          </v-btn></router-link>
     </v-app-bar>
 </div>
 </template>
