@@ -77,7 +77,7 @@
           <v-btn v-if="currentUser" color="red" @click.prevent="signOut()">
              Sign Out
           </v-btn>
-          <router-link to="/login"><v-btn v-if="!currentUser" color="green">
+          <router-link id="login_text_decoration" to="/login"><v-btn v-if="!currentUser" color="green">
              Log In
           </v-btn></router-link>
     </v-app-bar>
@@ -115,6 +115,10 @@ nav li:last-child {
   position: absolute;
   bottom: 40px;
   color: orange;
+}
+
+#login_text_decoration {
+  text-decoration: none;
 }
 </style>
 

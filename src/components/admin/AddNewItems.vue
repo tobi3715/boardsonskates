@@ -1,5 +1,24 @@
 <template>
   <v-container>
+
+    <v-snackbar
+      top
+      v-model="newitemSuccess"
+    >
+      {{ newitemText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="newitemSuccess = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
     <v-row>
       <v-col>
         <h1>Add New Item</h1>
@@ -14,15 +33,18 @@
             <v-text-field label="Price" required v-model="price">
           
             </v-text-field>
+            <v-text-field label="Filter (illustration or theme (leave empty to show under 'All'))" required v-model="filter">
+          
+            </v-text-field>
             
-            <v-file-input label="file input" @change="uploadImage"></v-file-input>
+            <v-file-input label="Image (required)" @change="uploadImage"></v-file-input>
 
             <v-btn color="green" @click="addNewMenuItem()" :disabled="btnDisable">
                 Add Item
             </v-btn>
-            <v-btn color="red">
+            <router-link id="cancel" to="/admin"><v-btn color="red">
                 Cancel
-            </v-btn>
+            </v-btn></router-link>
             </v-simple-table>
         </div>
       </v-col>
@@ -82,6 +104,10 @@ tr td {
   font-weight: 300;
   font-size: 13px;
 }
+
+#cancel {
+  text-decoration: none;
+}
 </style>
 
 
@@ -97,6 +123,8 @@ import { dbMenuAdd, fb} from '../../../firebase'
             price: '',
             image: null,
             btnDisable: true,
+            newitemSuccess: false,
+            newitemText: 'A new item has been added!'
         }
     },
     methods: {
@@ -121,11 +149,13 @@ import { dbMenuAdd, fb} from '../../../firebase'
         
       },
         addNewMenuItem() {
+          this.newitemSuccess = true;
             dbMenuAdd.add({
                 name: this.name,
                 description: this.description,
                 price: this.price,
                 image: this.image,
+                filter: this.filter
             })
         }
     }

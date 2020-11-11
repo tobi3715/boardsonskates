@@ -17,6 +17,23 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <v-snackbar
+      top
+      v-model="deleteSucces"
+    >
+      {{ deleteText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="deleteSucces = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
 
     <v-row>
       <v-col>
@@ -26,7 +43,7 @@
     >
       <template v-slot:default>
         <thead>
-          <v-btn text to="/addNew">
+          <v-btn color="blue" text to="/addNew">
             <v-icon>add</v-icon><span style="padding:0 10px">Add Item</span>
           </v-btn>
           <tr>
@@ -128,7 +145,9 @@ import { dbMenuAdd} from '../../firebase'
       item: [],
       activeEditItem: null,
       updatedSucces: false,
-      updatedText: 'Menu item has been updated!'
+      updatedText: 'Menu item has been updated!',
+      deleteSucces: false,
+      deleteText: 'An item has been deleted!'
       }
     },
     beforeCreate() {
@@ -151,6 +170,7 @@ import { dbMenuAdd} from '../../firebase'
             });
       },
         deleteItem(id) {
+          this.deleteSucces = true,
             dbMenuAdd.doc(id).delete().then(function() {
                 console.log("Document successfully deleted!");
         }).catch(function(error) {
@@ -175,19 +195,6 @@ import { dbMenuAdd} from '../../firebase'
       menuItems() {
         return this.$store.getters.getMenuItems
       },
-      subTotal () {
-        var subCost = 0;
-        for (var items in this.basket) {
-          var individualItem = this.basket [items];
-          subCost += individualItem.quantity + individualItem.price;
-        }
-        return subCost
-      },
-      total () {
-        var deliveryPrice = 20;
-        var totalCost = this.subTotal
-        return totalCost + deliveryPrice
-      }
     }
   }
 </script>
